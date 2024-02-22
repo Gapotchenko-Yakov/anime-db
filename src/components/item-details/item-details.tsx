@@ -1,10 +1,3 @@
-import Link from "@mui/material/Link";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import React from "react";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
@@ -76,29 +69,20 @@ class ItemDetails extends React.Component<ItemDetailsProps, ItemDetailsState> {
     }
 
     return (
-      <Card sx={{ width: 320 }}>
-        <CardMedia
-          sx={{ width: 300, height: 300, my: 1, mx: "auto" }}
-          image={itemImageUrl}
-          title={item.name}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {item.name}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {renderItemDetails(item)}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">
-            <Link href={`${item?.id}`}>View details</Link>
-          </Button>
-          <Button size="small">
-            <Link href={`${item?.id}`}>Share</Link>
-          </Button>
-        </CardActions>
-      </Card>
+      <div className="w-80">
+        <img className="w-72 h-72 mx-auto my-3" src={itemImageUrl} />
+        <h5>{item.name}</h5>
+
+        <div>{renderItemDetails(item)}</div>
+        <div className="flex flex-row">
+          <button>
+            <a href={`${item?.id}`}>View details</a>
+          </button>
+          <button>
+            <a href={`${item?.id}`}>Share</a>
+          </button>
+        </div>
+      </div>
     );
   }
 }

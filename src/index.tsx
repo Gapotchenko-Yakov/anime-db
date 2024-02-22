@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./components/app";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { Provider } from "react-redux";
 
 // import theme from "./mui/theme.ts";

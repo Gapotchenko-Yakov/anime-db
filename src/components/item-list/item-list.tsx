@@ -1,10 +1,4 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
 
 import ErrorIndicator from "../error-indicator";
 import Spinner from "../spinner";
@@ -64,25 +58,17 @@ class ItemList extends React.Component<ItemListProps, ItemListState> {
     console.log("items:   ", items);
 
     return (
-      <Box
-        sx={{
-          width: "80%",
-          bgcolor: "background.paper",
-          color: "text.primary",
-        }}
-      >
-        <List component="nav" aria-label="planets list">
-          {items.map((item: { id: number; name: string }) => (
-            <ListItemButton
-              key={item.id}
-              selected={itemId === item.id}
-              onClick={(e) => setItemId(item.id)}
-            >
-              <ListItemText primary={item.name} />
-            </ListItemButton>
-          ))}
-        </List>
-      </Box>
+      <ul>
+        {items.map((item: { id: number; name: string }) => (
+          <li
+            key={item.id}
+            onClick={(e) => setItemId(item.id)}
+            className={`${itemId === item.id ? "bg-cyan-600" : "bg-cyan-300"}`}
+          >
+            <span>{item.name}</span>
+          </li>
+        ))}
+      </ul>
     );
   }
 }
