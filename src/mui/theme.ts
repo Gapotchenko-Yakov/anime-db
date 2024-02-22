@@ -1,5 +1,19 @@
-// color design tokens export
-export const tokensDark = {
+interface IColorToken {
+  [index: number]: string;
+}
+
+interface IColorTokensGroup {
+  [index: number]: string;
+}
+
+interface IColorTokensAll {
+  [index: string]: IColorTokensGroup;
+  // primary: IColorTokensGroup;
+  // secondary: IColorTokensGroup;
+}
+
+// color design tokens
+export const tokensDark: IColorTokensAll = {
   grey: {
     0: "#ffffff", // manually adjusted
     10: "#f6f6f6", // manually adjusted
@@ -43,13 +57,13 @@ export const tokensDark = {
 };
 
 // function that reverses the color palette
-function reverseTokens(tokensDark) {
-  const reversedTokens = {};
-  Object.entries(tokensDark).forEach(([key, val]) => {
-    const keys = Object.keys(val);
-    const values = Object.values(val);
+function reverseTokens(tokensDark: IColorTokensAll): IColorTokensAll {
+  const reversedTokens: IColorTokensAll = {} as IColorTokensAll;
+  Object.entries(tokensDark).forEach(([key, val]: [string, object]) => {
+    const keys: number[] = Object.keys(val).map(Number);
+    const values: string[] = Object.values(val);
     const length = keys.length;
-    const reversedObj = {};
+    const reversedObj: IColorTokensGroup = {} as IColorTokensGroup;
     for (let i = 0; i < length; i++) {
       reversedObj[keys[i]] = values[length - i - 1];
     }
@@ -60,7 +74,7 @@ function reverseTokens(tokensDark) {
 export const tokensLight = reverseTokens(tokensDark);
 
 // mui theme settings
-export const themeSettings = (mode) => {
+export const themeSettings = (mode: string) => {
   return {
     palette: {
       mode: mode,

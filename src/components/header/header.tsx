@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../navbar";
 
-const Header = (props) => {
+const Header = (props: {}) => {
   return <Navbar />;
 };
 

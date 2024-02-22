@@ -9,10 +9,28 @@ import React from "react";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
 
-class ItemDetails extends React.Component {
-  state = {
-    item: {},
-    itemImageUrl: null,
+type ItemDetailsProps = {
+  itemId: number;
+  getData: Function;
+  getImageUrl: Function;
+  renderItemDetails: Function;
+};
+
+type Item = { id: number; name: string };
+
+type ItemDetailsState = {
+  item: Item;
+  itemImageUrl: string | undefined;
+  loading: boolean;
+  error: boolean;
+};
+
+class ItemDetails extends React.Component<ItemDetailsProps, ItemDetailsState> {
+  state: ItemDetailsState = {
+    item: {} as Item,
+    itemImageUrl: undefined,
+    loading: false,
+    error: false,
   };
 
   updateItem() {
@@ -21,7 +39,7 @@ class ItemDetails extends React.Component {
     if (itemId) {
       this.setState({ loading: true });
       getData(itemId)
-        .then((item) =>
+        .then((item: Item) =>
           this.setState({
             item,
             itemImageUrl: getImageUrl(itemId),
@@ -29,14 +47,14 @@ class ItemDetails extends React.Component {
             error: false,
           })
         )
-        .catch((e) => this.setState({ loading: false, error: true }));
+        .catch((e: object) => this.setState({ loading: false, error: true }));
     }
   }
 
   componentDidMount() {
     this.updateItem();
   }
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: ItemDetailsProps) {
     if (this.props.itemId !== prevProps.itemId) {
       this.updateItem();
     }
@@ -74,10 +92,10 @@ class ItemDetails extends React.Component {
         </CardContent>
         <CardActions>
           <Button size="small">
-            <Link href={item?.id}>View details</Link>
+            <Link href={`${item?.id}`}>View details</Link>
           </Button>
           <Button size="small">
-            <Link href={item?.id}>Share</Link>
+            <Link href={`${item?.id}`}>Share</Link>
           </Button>
         </CardActions>
       </Card>

@@ -1,3 +1,3 @@
-import theme from "./theme.ts";
+import { tokensDark, tokensLight, themeSettings } from "./theme";
 
-export { theme };
+export { tokensDark, tokensLight, themeSettings }; // theme

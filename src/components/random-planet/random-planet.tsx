@@ -1,10 +1,22 @@
 import React from "react";
 import PlanetDetails from "../item-details/item-details";
-import SwapiService from "../../services/swapi-service";
+import SwapiService from "../../services/old-pure-redux/swapi-service";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
 
-class RandomPlanet extends React.Component {
+type RandomPlanetState = {
+  loading: boolean;
+  error: boolean;
+  planet: {
+    id: number;
+    name: string;
+    population: number;
+    rotationPeriod: number;
+    diameter: number;
+  };
+};
+
+class RandomPlanet extends React.Component<{}, RandomPlanetState> {
   swapiService = new SwapiService();
 
   updatePlanet = () => {
@@ -18,9 +30,13 @@ class RandomPlanet extends React.Component {
       .catch((e) => this.setState({ loading: false, error: true }));
   };
 
-  constructor(props) {
+  constructor(props: any) {
     super(props);
-    this.state = { loading: false, error: false, planet: {} };
+    this.state = {
+      loading: false,
+      error: false,
+      planet: {},
+    } as RandomPlanetState;
   }
 
   componentDidMount() {
@@ -35,7 +51,7 @@ class RandomPlanet extends React.Component {
     const {
       loading,
       error,
-      planet: { id, name, population, rotationPeriod, diameter },
+      planet: { id, name, population, rotationPeriod, diameter } = {},
     } = this.state;
 
     if (loading) return <Spinner />;

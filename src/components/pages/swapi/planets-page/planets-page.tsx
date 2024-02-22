@@ -1,6 +1,6 @@
 import ItemDetails from "../../../item-details/item-details";
 import ItemList from "../../../item-list";
-import SwapiService from "../../../../services/swapi-service";
+import SwapiService from "../../../../services/old-pure-redux/swapi-service";
 import React from "react";
 import { Grid } from "@mui/material";
 import Table from "@mui/material/Table";
@@ -11,22 +11,28 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-class PlanetsPage extends React.Component {
-  constructor(props) {
-    super(props);
+type PlanetsPageProps = {};
 
-    this.state = {
-      itemId: 3,
-    };
-  }
+type PlanetsPageState = {
+  itemId: number;
+};
+
+interface IPlanetsPageState {
+  itemId: number;
+}
+
+class PlanetsPage extends React.Component<PlanetsPageProps, PlanetsPageState> {
+  state: PlanetsPageState = {
+    itemId: 3,
+  };
 
   swapiService = new SwapiService();
-  setItemId = (id) => {
+  setItemId = (id: number) => {
     console.log("id at PeoplePage:   ", id);
     return this.setState({ itemId: id });
   };
 
-  renderItemDetails = (item) => {
+  renderItemDetails = (item: object) => {
     const rows = Object.entries(item);
 
     for (let i = 0; i < rows.length; i++) {
@@ -65,6 +71,8 @@ class PlanetsPage extends React.Component {
   };
 
   render() {
+    const { itemId } = this.state;
+
     return (
       <Grid container>
         <Grid item md={8}>

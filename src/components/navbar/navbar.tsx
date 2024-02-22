@@ -8,21 +8,12 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
-import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./navbar.css";
 
-const Navbar = (props) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+const Navbar = (props: {}) => {
   return (
     <AppBar
       position="static"
@@ -31,7 +22,7 @@ const Navbar = (props) => {
     >
       <Toolbar>
         <IconButton size="large" edge="start" color="inherit" aria-label="logo">
-          <LocalFireDepartmentIcon />
+          🔥
         </IconButton>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           AniDB
@@ -47,7 +38,7 @@ const Navbar = (props) => {
             <Button sx={{ color: "text.primary" }}>Starships</Button>
           </NavLink>
 
-          <Button
+          {/* <Button
             color="inherit"
             id="resources-button"
             aria-controls={open ? "resources-menu" : undefined}
@@ -58,10 +49,10 @@ const Navbar = (props) => {
             sx={{ color: "text.primary" }}
           >
             Resources
-          </Button>
+          </Button> */}
           <Button sx={{ color: "text.primary" }}>Login</Button>
         </Stack>
-        <Menu
+        {/* <Menu
           id="resources-menu"
           anchorEl={anchorEl}
           open={open}
@@ -84,7 +75,7 @@ const Navbar = (props) => {
           <MenuItem onClick={handleClose} sx={{ color: "text.primary" }}>
             Podcast
           </MenuItem>
-        </Menu>
+        </Menu> */}
       </Toolbar>
     </AppBar>
   );

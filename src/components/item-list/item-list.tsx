@@ -5,8 +5,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import InboxIcon from "@mui/icons-material/Inbox";
-import DraftsIcon from "@mui/icons-material/Drafts";
+
 import ErrorIndicator from "../error-indicator";
 import Spinner from "../spinner";
 
@@ -24,7 +23,19 @@ import Spinner from "../spinner";
 //   <button onClick={(e) => setItemId(item.id)}>{item.name}</button>
 // </li>
 
-class ItemList extends React.Component {
+type ItemListProps = {
+  itemId: number;
+  setItemId: Function;
+  getData: Function;
+};
+
+type ItemListState = {
+  items: object[];
+  loading: boolean;
+  error: boolean;
+};
+
+class ItemList extends React.Component<ItemListProps, ItemListState> {
   state = { items: [], loading: false, error: false };
 
   componentDidMount() {
@@ -32,8 +43,10 @@ class ItemList extends React.Component {
 
     this.setState({ loading: true });
     getData()
-      .then((items) => this.setState({ items, loading: false, error: false }))
-      .catch((e) => this.setState({ loading: false, error: true }));
+      .then((items: object[]) =>
+        this.setState({ items, loading: false, error: false })
+      )
+      .catch((e: object) => this.setState({ loading: false, error: true }));
   }
 
   render() {
@@ -59,7 +72,7 @@ class ItemList extends React.Component {
         }}
       >
         <List component="nav" aria-label="planets list">
-          {items.map((item) => (
+          {items.map((item: { id: number; name: string }) => (
             <ListItemButton
               key={item.id}
               selected={itemId === item.id}

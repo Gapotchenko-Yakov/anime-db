@@ -9,7 +9,10 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Layout from "../layout";
 import { Box, Container } from "@mui/material";
 
-const App = (props) => {
+const App = (props: {}) => {
+  // const mode = useSelector((state) => state.global.mode);
+  // const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+
   return (
     <>
       <BrowserRouter>
