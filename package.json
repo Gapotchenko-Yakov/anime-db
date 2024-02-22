@@ -27,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "tailwind:watch": "npx tailwindcss -i ./src/styles/input.css -o ./src/styles/output.css --watch"
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +49,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react": "^18.2.57"
+    "@types/react": "^18.2.57",
+    "tailwindcss": "^3.4.1"
   }
 }
