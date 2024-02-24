@@ -1,14 +1,14 @@
 import ItemDetails from "../../../components/item-details";
 import ItemList from "../../../components/item-list";
 import {
-  useGetPlanetByIDQuery,
-  useGetAllPlanetsQuery,
+  useGetStarshipByIDQuery,
+  useGetAllStarshipsQuery,
 } from "../../../components/store/api";
 
 import { useState } from "react";
-import { getPlanetImageURL } from "../../../utils";
+import { getStarshipImageURL } from "../../../utils";
 
-function PlanetsPage() {
+function StarshipsPage() {
   const [itemId, setItemId] = useState<number>(3);
 
   const renderItemDetails = (item: object) => {
@@ -45,14 +45,14 @@ function PlanetsPage() {
         <ItemList
           itemId={itemId}
           setItemId={setItemId}
-          getData={useGetAllPlanetsQuery}
+          getData={useGetAllStarshipsQuery}
         />
       </div>
       <div className="w-1/4 inline-block mx-0">
         <ItemDetails
           itemId={itemId}
-          getData={useGetPlanetByIDQuery}
-          getImageUrl={getPlanetImageURL}
+          getData={useGetStarshipByIDQuery}
+          getImageUrl={getStarshipImageURL}
           renderItemDetails={renderItemDetails}
         />
       </div>
@@ -60,4 +60,4 @@ function PlanetsPage() {
   );
 }
 
-export default PlanetsPage;
+export default StarshipsPage;

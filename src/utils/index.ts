@@ -5,8 +5,10 @@ const _imageUrl = "https://starwars-visualguide.com/assets/img";
 
 const getPlanetImageURL = (id: number | undefined) =>
   `${_imageUrl}/planets/${id}.jpg`;
-const getPersonImageURL = (id: number) => `${_imageUrl}/people/${id}.jpg`;
-const getStarshipImageURL = (id: number) => `${_imageUrl}/starships/${id}.jpg`;
+const getPersonImageURL = (id: number | undefined) =>
+  `${_imageUrl}/characters/${id}.jpg`;
+const getStarshipImageURL = (id: number | undefined) =>
+  `${_imageUrl}/starships/${id}.jpg`;
 
 const _extractId = (item: Person | Planet | Starship) => {
   return getIdByUrl(item.url);

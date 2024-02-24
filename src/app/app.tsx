@@ -1,12 +1,13 @@
 import React from "react";
-import Header from "../header";
-import RandomPlanet from "../random-planet/random-planet";
-import ItemDetails from "../item-details/item-details";
-import ItemList from "../item-list";
-import PlanetsPage from "../../pages/swapi/planets-page";
+import Header from "../components/header";
+import RandomPlanet from "../components/random-planet/random-planet";
+import ItemDetails from "../components/item-details/item-details";
+import ItemList from "../components/item-list";
+import PlanetsPage from "../pages/swapi/planets-page";
 
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Layout from "../layout";
+import Layout from "../components/layout";
+import { PeoplePage, StarshipsPage } from "../pages/swapi";
 
 const App = (props: {}) => {
   // const mode = useSelector((state) => state.global.mode);
@@ -18,6 +19,8 @@ const App = (props: {}) => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route path="planets/" element={<PlanetsPage />} />
+            <Route path="people/" element={<PeoplePage />} />
+            <Route path="starships/" element={<StarshipsPage />} />
             <Route path="*" element={<h1>PageNotFound!</h1>} />
           </Route>
         </Routes>
