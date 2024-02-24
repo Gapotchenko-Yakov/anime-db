@@ -55,4 +55,32 @@ type Starship = {
   url: string;
 };
 
-export type { Person, Planet, Starship };
+type PeopleResult = {
+  count: number;
+  next: string;
+  previous: object;
+  results: Person[];
+};
+
+type PlanetResult = {
+  count: number;
+  next: string;
+  previous: object;
+  results: Planet[];
+};
+
+type StarshipsResult = {
+  count: number;
+  next: string;
+  previous: object;
+  results: Starship[];
+};
+
+export type {
+  Person,
+  Planet,
+  Starship,
+  PeopleResult,
+  PlanetResult,
+  StarshipsResult,
+};

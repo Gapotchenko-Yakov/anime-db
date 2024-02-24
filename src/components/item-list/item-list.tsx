@@ -2,6 +2,7 @@ import * as React from "react";
 
 import ErrorIndicator from "../error-indicator";
 import Spinner from "../spinner";
+import { getIdByUrl } from "../../utils";
 
 // export default function SelectedListItem() {
 //   const [selectedIndex, setSelectedIndex] = React.useState(1);
@@ -29,48 +30,50 @@ type ItemListState = {
   error: boolean;
 };
 
-class ItemList extends React.Component<ItemListProps, ItemListState> {
-  state = { items: [], loading: false, error: false };
+const ItemList = (props: ItemListProps) => {
+  const { getData, itemId, setItemId } = props;
 
-  componentDidMount() {
-    const { getData } = this.props;
+  const { data: { results: items = [] } = {}, loading, error } = getData();
 
-    this.setState({ loading: true });
-    getData()
-      .then((items: object[]) =>
-        this.setState({ items, loading: false, error: false })
-      )
-      .catch((e: object) => this.setState({ loading: false, error: true }));
+  // React.useEffect(() => {
+  //   const { getData } = props;
+
+  //   this.setState({ loading: true });
+  //   getData()
+  //     .then((items: object[]) =>
+  //       this.setState({ items, loading: false, error: false })
+  //     )
+  //     .catch((e: object) => this.setState({ loading: false, error: true }));
+  // }, []);
+
+  if (loading) {
+    return <Spinner />;
   }
 
-  render() {
-    const { getData, itemId, setItemId } = this.props;
-    const { items, loading, error } = this.state;
+  if (error) {
+    return <ErrorIndicator />;
+  }
 
-    if (loading) {
-      return <Spinner />;
-    }
+  console.log("🚀 ~ ItemList ~ items:", items);
 
-    if (error) {
-      return <ErrorIndicator />;
-    }
+  return (
+    <ul>
+      {items.map((item: { url: string; name: string }) => {
+        console.log("🚀 ~ item:", item);
+        const id = getIdByUrl(item.url);
 
-    console.log("items:   ", items);
-
-    return (
-      <ul>
-        {items.map((item: { id: number; name: string }) => (
+        return (
           <li
-            key={item.id}
-            onClick={(e) => setItemId(item.id)}
-            className={`${itemId === item.id ? "bg-cyan-600" : "bg-cyan-300"}`}
+            key={id}
+            onClick={(e) => setItemId(id)}
+            className={`${itemId === id ? "bg-cyan-600" : "bg-cyan-300"}`}
           >
             <span>{item.name}</span>
           </li>
-        ))}
-      </ul>
-    );
-  }
-}
+        );
+      })}
+    </ul>
+  );
+};
 
 export default ItemList;

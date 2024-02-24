@@ -3,7 +3,7 @@ import Header from "../header";
 import RandomPlanet from "../random-planet/random-planet";
 import ItemDetails from "../item-details/item-details";
 import ItemList from "../item-list";
-import PlanetsPage from "../pages/swapi/planets-page";
+import PlanetsPage from "../../pages/swapi/planets-page";
 
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Layout from "../layout";

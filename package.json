@@ -26,7 +26,6 @@
     "eject": "react-scripts eject",
     "tailwind:watch": "npx tailwindcss -i ./public/input.css -o ./public/output.css --watch",
     "tailwind": "npx tailwindcss -i ./public/input.css -o ./public/output.css"
-
   },
   "eslintConfig": {
     "extends": [

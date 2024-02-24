@@ -1,4 +1,19 @@
 import starWarsApi from "./swapi-service";
-import { useGetPersonByIDQuery } from "./swapi-service";
+import {
+  useGetPersonByIDQuery,
+  useGetPlanetByIDQuery,
+  useGetStarshipByIDQuery,
+  useGetAllPeopleQuery,
+  useGetAllPlanetsQuery,
+  useGetAllStarshipsQuery,
+} from "./swapi-service";
 
-export { starWarsApi, useGetPersonByIDQuery };
+export {
+  useGetPersonByIDQuery,
+  useGetPlanetByIDQuery,
+  useGetStarshipByIDQuery,
+  useGetAllPeopleQuery,
+  useGetAllPlanetsQuery,
+  useGetAllStarshipsQuery,
+  starWarsApi,
+};
