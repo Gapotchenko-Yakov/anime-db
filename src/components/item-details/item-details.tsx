@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
 import { useGetAllPlanetsQuery } from "../../services";
@@ -19,18 +19,17 @@ const ItemDetails = (props: ItemDetailsProps) => {
     undefined
   );
 
-  const { data: item = {}, error, loading } = getData(itemId);
+  const { data: item = {}, error, isLoading } = getData(itemId);
   console.log("🚀 ~ ItemDetails ~ item:", item);
 
-  useEffect(() => {
+  useMemo(() => {
     setItemImageUrl(getImageUrl(itemId));
-    // setItem(data);
   }, [itemId]);
 
   // console.log("itemId at ItemDetails:", itemId);
   // console.log("item:", item);
 
-  if (loading) {
+  if (isLoading) {
     return <Spinner />;
   }
 

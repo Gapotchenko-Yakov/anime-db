@@ -33,7 +33,7 @@ type ItemListState = {
 const ItemList = (props: ItemListProps) => {
   const { getData, itemId, setItemId } = props;
 
-  const { data: { results: items = [] } = {}, loading, error } = getData();
+  const { data: { results: items = [] } = {}, isLoading, error } = getData();
 
   // React.useEffect(() => {
   //   const { getData } = props;
@@ -46,7 +46,7 @@ const ItemList = (props: ItemListProps) => {
   //     .catch((e: object) => this.setState({ loading: false, error: true }));
   // }, []);
 
-  if (loading) {
+  if (isLoading) {
     return <Spinner />;
   }
 
