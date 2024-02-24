@@ -1,16 +1,16 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import type { Person, Planet, Starship } from "../types";
+import type { Person, Planet, Starship } from "../../../types";
 import {
   PeopleResult,
   PlanetResult,
   StarshipsResult,
-} from "../types/swapi-types";
+} from "../../../types/swapi-types";
 
 const _apiUrl = "https://swapi.dev/api";
 const _imageUrl = "https://starwars-visualguide.com/assets/img";
 
 // Define a service using a base URL and expected endpoints
-export const starWarsApi = createApi({
+const starWarsApi = createApi({
   reducerPath: "starWarsApi",
   baseQuery: fetchBaseQuery({ baseUrl: _apiUrl }),
   endpoints: (builder) => ({

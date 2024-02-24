@@ -4,7 +4,7 @@ import { SwapiService } from "../../../services/old-pure-redux";
 import {
   useGetPlanetByIDQuery,
   useGetAllPlanetsQuery,
-} from "../../../services";
+} from "../../../components/store/api";
 
 import React, { SetStateAction, useState, FC } from "react";
 import { Dispatch } from "@reduxjs/toolkit";

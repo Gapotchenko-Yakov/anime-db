@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Spinner from "../spinner";
 import ErrorIndicator from "../error-indicator";
-import { useGetAllPlanetsQuery } from "../../services";
+import { useGetAllPlanetsQuery } from "../store/api";
 
 type ItemDetailsProps = {
   itemId: number;
@@ -20,7 +20,6 @@ const ItemDetails = (props: ItemDetailsProps) => {
   );
 
   const { data: item = {}, error, isLoading } = getData(itemId);
-  console.log("🚀 ~ ItemDetails ~ item:", item);
 
   useMemo(() => {
     setItemImageUrl(getImageUrl(itemId));

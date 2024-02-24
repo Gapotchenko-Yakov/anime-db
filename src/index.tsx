@@ -10,7 +10,7 @@ import reportWebVitals from "./reportWebVitals";
 import { configureStore } from "@reduxjs/toolkit";
 // Or from '@reduxjs/toolkit/query/react'
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { starWarsApi } from "./services";
+import { starWarsApi } from "./components/store/api";
 
 export const store = configureStore({
   reducer: {
